@@ -4,9 +4,7 @@ export class ProductsPage {
     }
 
     agregarProducto(addproducto) {
-        cy.get(addproducto).click()
+        cy.get(`[name="${addproducto}"]`).click()
         cy.get(this.CloseButton).click()
-
     }
-
-}
+} 

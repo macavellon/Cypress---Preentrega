@@ -23,9 +23,9 @@ describe('Preentrega' , ()=> {
     loginPage.login(Cypress.env().usuario, Cypress.env().contraseña);
     headerPage.verificarUser(Cypress.env().usuario);
     onlineShopPage.onlineShopIn()
-    onlineShopPage.productsPage.agregarProducto('#add-to-cart-1004')
-    onlineShopPage.productsPage.agregarProducto('#add-to-cart-1004')
-    onlineShopPage.productsPage.agregarProducto('#add-to-cart-1007')
+    onlineShopPage.productsPage.agregarProducto(data.producto1.nombre)
+    onlineShopPage.productsPage.agregarProducto(data.producto1.nombre)
+    onlineShopPage.productsPage.agregarProducto(data.producto2.nombre)
     cy.get('#goShoppingCart').click()
     // Producto 1
     onlineShopPage.shoppingCartPage.verificarProducto(data.producto1.nombre).should('exist')

@@ -5,7 +5,7 @@ export class LoginPage {
         this.SubmitFormButton = '#submitForm'
         this.RegisterToggle = '#registertoggle'
     }
-
+//loginpage
     login (usuario, contraseña) {
         cy.get(this.RegisterToggle).dblclick()
         cy.get(this.UserInput).type(usuario)
