@@ -1,19 +1,32 @@
+
 {
     "producto1": {
         "nombre": "Sweater rosa",
         "precio": 14.86 ,
-        "cantidad": 2 
+        "cantidad": 1
 
 
 
 },
 
 "producto2": {
-    "nombre": "Campera Negra",
-    "precio": 20.14 ,
+    "nombre": "Buzo Negro",
+    "precio": 23.76 ,
     "cantidad": 1 
 
 
+},
+"login" :{
+    "user": "maca-07",
+    "password": "123456!"
+    
+
+},
+
+"purchase" : {
+"name": "Macarena",
+"lastName": "Vellon",
+"cardNumber":"4555678765431234"
 }
 
 }

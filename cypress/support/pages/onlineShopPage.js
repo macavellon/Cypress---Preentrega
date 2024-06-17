@@ -1,6 +1,9 @@
 import { ShoppingCartPage } from './shoppingCartPage.js'
 import { ProductsPage } from './productsPage'
 
+
+
+
 export class OnlineShopPage {
 
     constructor() {

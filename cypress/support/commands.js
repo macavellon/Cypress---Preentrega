@@ -1,25 +1,56 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+const baseUrl = 'https://pushing-it.onrender.com';
+Cypress.Commands.add('login', ( usuario, contraseña)=> {
+    cy.request({
+        method: 'POST',
+        url: `${baseUrl}/api/register`,
+        body: {
+            "username": usuario,
+            "password": contraseña,
+            "gender": "female",
+            "day": "13",
+            "month": "May",
+            "year": "1994",
+        },
+    }).then(response => {
+        cy.log(response)
+        expect(response.status).to.be.equal(201);
+
+        cy.request({
+            method: 'POST',
+            url: `${baseUrl}/api/login`,
+            body: {
+                "username": usuario,
+                "password": contraseña,
+            },
+
+        }).then(response2 => {
+            cy.log(response2),
+            window.localStorage.setItem('token' , response2.body.token),
+            window.localStorage.setItem('user', response2.body.user.username),
+            window.localStorage.setItem('userId', response2.body.user.userId)
+
+        })
+    })
+
+
+        
+
+})   
+
+
+Cypress.Commands.add('deleteuser', (token, usuario) => {
+    cy.request({
+        method: 'DELETE',
+        url: `${baseUrl}/api/deleteuser/${usuario}`,
+                headers: {
+                    "authorization": `Bearer ${token}`
+                },
+
+
+
+    }).then(respuesta => {
+        cy.log(respuesta)
+        
+    
+    })
+})
